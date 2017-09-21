@@ -89,7 +89,9 @@ public:
     ERR_CLIENT_ABORT,           ///< The client aborted its request
     ERR_NO_CLIENTS,             ///< There are no clients requesting this URL any more
     ERR_READ_ERROR,             ///< There was a read(2) error while retrieving this object
-    ERR_CONNECT_FAIL            ///< Squid failed to connect to the server for this request
+    ERR_CONNECT_FAIL,            ///< Squid failed to connect to the server for this request
+	  TCP_TUNNEL,
+	  TAG_NONE
   };
 
   /**
