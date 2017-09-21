@@ -95,13 +95,13 @@ SquidLogLine::logCacheResult SquidLogLine::parseCacheResult (const string & cr)
 {
   logCacheResult res;
 
-  if (cr == "TCP_HIT")
+  if (cr == "TCP_HIT" || cr == "TCP_HIT_ABORTED")
     res = TCP_HIT;
   else if (cr == "TCP_MEM_HIT")
     res = TCP_MEM_HIT;
   else if (cr == "TCP_NEGATIVE_HIT")
     res = TCP_NEGATIVE_HIT;
-  else if (cr == "TCP_MISS")
+  else if (cr == "TCP_MISS" || cr == "TCP_MISS_ABORTED")
     res = TCP_MISS;
   else if (cr == "TCP_REFRESH_HIT")
     res = TCP_REFRESH_HIT;
@@ -125,7 +125,7 @@ SquidLogLine::logCacheResult SquidLogLine::parseCacheResult (const string & cr)
     res = TCP_SWAPFAIL;
   else if (cr == "TCP_SWAPFAIL_MISS")
     res = TCP_SWAPFAIL_MISS;
-  else if (cr == "TCP_DENIED")
+  else if (cr == "TCP_DENIED" || cr == "TCP_DENIED_ABORTED")
     res = TCP_DENIED;
   else if (cr == "UDP_HIT")
     res = UDP_HIT;
@@ -147,6 +147,10 @@ SquidLogLine::logCacheResult SquidLogLine::parseCacheResult (const string & cr)
     res = ERR_READ_ERROR;
   else if (cr == "ERR_CONNECT_FAIL")
     res = ERR_CONNECT_FAIL;
+  else if (cr == "TCP_TUNNEL")
+    res = TCP_TUNNEL;
+  else if (cr == "TAG_NONE" || cr == "TAG_NONE_ABORTED")
+    res = TAG_NONE;  
   else
     {
       WARNING ("Unknown cache result " << cr);
@@ -332,6 +336,8 @@ string SquidLogLine::toString (logCacheResult cr)
     res = "TCP_SWAPFAIL_MISS";
   else if (cr == TCP_DENIED)
     res = "TCP_DENIED";
+  else if (cr == TCP_TUNNEL)
+    res = "TCP_TUNNEL";
   else if (cr == UDP_HIT)
     res = "UDP_HIT";
   else if (cr == UDP_HIT_OBJ)
