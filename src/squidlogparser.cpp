@@ -473,6 +473,8 @@ void SquidLogParser::parseFile (DBConn *conn, const string & fname, bool from_be
         case SquidLogLine::ERR_NO_CLIENTS:
         case SquidLogLine::ERR_READ_ERROR:
         case SquidLogLine::ERR_CONNECT_FAIL:
+		case SquidLogLine::TCP_TUNNEL:
+		case SquidLogLine::TAG_NONE:
           s_size = sll.getSize ();
           usr->addSize (s_size);
           break;
