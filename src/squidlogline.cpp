@@ -101,7 +101,7 @@ SquidLogLine::logCacheResult SquidLogLine::parseCacheResult (const string & cr)
     res = TCP_MEM_HIT;
   else if (cr == "TCP_NEGATIVE_HIT")
     res = TCP_NEGATIVE_HIT;
-  else if (cr == "TCP_MISS" || cr == "TCP_MISS_ABORTED")
+  else if (cr == "TCP_MISS" || cr == "TCP_MISS_ABORTED" || cr == "TCP_MISS_TIMEDOUT")
     res = TCP_MISS;
   else if (cr == "TCP_REFRESH_HIT")
     res = TCP_REFRESH_HIT;
